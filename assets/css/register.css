@@ -1,0 +1,277 @@
+:root {
+    --primary:#4f46e5; --primary-dark:#4338ca; --secondary:#7c3aed;
+    --danger:#ef4444; --success:#10b981;
+    --dark:#0f172a; --text:#1e293b; --gray:#64748b; --light-gray:#f8faff;
+    --white:#ffffff; --border:#e2e8f0;
+    --radius-md:10px; --radius-lg:18px; --radius-full:9999px;
+    --transition:all 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    min-height: 100vh;
+    display: flex;
+    background: var(--light-gray);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Split Layout ──────────────────────────────────────────── */
+.register-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Left panel */
+.register-panel {
+    flex: 1;
+    background: linear-gradient(155deg, #134e4a 0%, #0f766e 45%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 3.5rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.register-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.register-panel::after {
+    content: '';
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: rgba(94,234,212,.1);
+    border-radius: 50%;
+    bottom: -80px;
+    right: -80px;
+    pointer-events: none;
+}
+
+.panel-logo {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 3rem;
+    z-index: 1;
+}
+
+.panel-logo i {
+    font-size: 2rem;
+    background: linear-gradient(135deg,#5eead4,#a7f3d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.panel-logo span {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+.panel-headline {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -.03em;
+    margin-bottom: 1rem;
+    z-index: 1;
+}
+
+.panel-headline span {
+    background: linear-gradient(135deg,#5eead4,#7dd3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.panel-sub {
+    color: rgba(255,255,255,.62);
+    font-size: .95rem;
+    line-height: 1.7;
+    max-width: 320px;
+    z-index: 1;
+}
+
+.panel-features {
+    list-style: none;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    z-index: 1;
+}
+
+.panel-features li {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: rgba(255,255,255,.78);
+    font-size: .88rem;
+}
+
+.panel-features li i {
+    width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,.1);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    color: #5eead4;
+    flex-shrink: 0;
+}
+
+/* Right panel */
+.register-form-side {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    background: var(--white);
+    overflow-y: auto;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 420px;
+    padding: .5rem 0;
+}
+
+.register-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-logo i {
+    font-size: 2.2rem;
+    color: #0f766e;
+    display: block;
+    margin-bottom: .6rem;
+}
+
+.register-logo h2 {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -.02em;
+}
+
+.register-logo p {
+    font-size: .88rem;
+    color: var(--gray);
+    margin-top: .3rem;
+}
+
+/* Form */
+.form-group { margin-bottom: 1rem; }
+
+.form-group label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .4rem;
+}
+
+.input-icon { position: relative; }
+
+.input-icon i {
+    position: absolute;
+    left: .9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    font-size: .88rem;
+    pointer-events: none;
+}
+
+.input-icon input {
+    width: 100%;
+    padding: .72rem .9rem .72rem 2.45rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: .92rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--white);
+    transition: var(--transition);
+}
+
+.input-icon input:focus {
+    outline: none;
+    border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15,118,110,.12);
+}
+
+.btn-register {
+    width: 100%;
+    padding: .82rem;
+    background: linear-gradient(135deg, #0f766e, #0e7490);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: .97rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: .6rem;
+}
+
+.btn-register:hover {
+    opacity: .92;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(15,118,110,.35);
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 1.3rem;
+    font-size: .88rem;
+    color: var(--gray);
+}
+
+.register-footer a {
+    color: #0f766e;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.register-footer a:hover { text-decoration: underline; }
+
+/* Alerts */
+.alert {
+    padding: .75rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    font-size: .87rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.alert-success { background: #d1fae5; color: #065f46; }
+.alert-error   { background: #fee2e2; color: #7f1d1d; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 960px) { .register-panel { display: none; } }
+
+@media (max-width: 960px) {
+    .register-form-side { width: 100%; padding: 2rem 1.25rem; }
+    body { background: var(--white); }
+}

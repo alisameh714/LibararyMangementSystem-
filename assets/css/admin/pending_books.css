@@ -1,0 +1,276 @@
+:root {
+    --primary:#4f46e5; --primary-dark:#4338ca; --secondary:#7c3aed;
+    --success:#10b981; --danger:#ef4444; --warning:#f59e0b;
+    --bg:#f0f4ff; --surface:#ffffff;
+    --dark:#0f172a; --text:#1e293b; --text-muted:#64748b; --text-light:#94a3b8;
+    --border:#e2e8f0;
+    --shadow-sm:0 1px 4px rgba(79,70,229,.07);
+    --shadow-md:0 4px 20px rgba(79,70,229,.11);
+    --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-xl:20px;
+    --transition:all 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pending-books-container {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+/* ── Page Header ────────────────────────────────────────────── */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.page-header h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -.03em;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.page-header h2 i { color: var(--warning); }
+
+.book-count {
+    background: rgba(245,158,11,.12);
+    color: #92400e;
+    padding: .28rem .85rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    border: 1px solid rgba(245,158,11,.25);
+}
+
+/* ── Empty State ────────────────────────────────────────────── */
+.empty-state {
+    text-align: center;
+    padding: 4.5rem 2rem;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.empty-state i {
+    font-size: 3.5rem;
+    color: var(--success);
+    margin-bottom: 1.1rem;
+    display: block;
+}
+
+.empty-state h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: .5rem;
+}
+
+.empty-state p { color: var(--text-muted); font-size: .92rem; }
+
+/* ── Cards Grid ─────────────────────────────────────────────── */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Book Card ──────────────────────────────────────────────── */
+.book-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--warning), #f97316);
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(79,70,229,.2);
+}
+
+/* Card cover */
+.card-cover { flex-shrink: 0; width: 90px; }
+
+.card-cover img {
+    width: 90px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    display: block;
+}
+
+.no-cover-card {
+    width: 90px;
+    height: 125px;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+/* Card info */
+.card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-width: 0;
+}
+
+.card-title { font-size: .97rem; line-height: 1.35; }
+
+.card-title a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.card-title a:hover { color: var(--primary); }
+
+.card-author {
+    font-size: .83rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+}
+
+.card-author i { color: var(--primary); }
+
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.card-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .74rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: .2rem .55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.card-meta span i { color: var(--primary); font-size: .72rem; }
+
+.card-desc {
+    font-size: .8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Card actions */
+.card-actions {
+    display: flex;
+    gap: .5rem;
+    margin-top: auto;
+    padding-top: .65rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .55rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: .83rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    flex: 1;
+}
+
+.btn-approve {
+    background: rgba(16,185,129,.1);
+    color: var(--success);
+    border: 1px solid rgba(16,185,129,.25);
+}
+
+.btn-approve:hover {
+    background: var(--success);
+    color: #fff;
+    border-color: var(--success);
+}
+
+.btn-reject {
+    background: rgba(239,68,68,.08);
+    color: var(--danger);
+    border: 1px solid rgba(239,68,68,.2);
+}
+
+.btn-reject:hover {
+    background: var(--danger);
+    color: #fff;
+    border-color: var(--danger);
+}
+
+/* Back link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: 1.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .88rem;
+    transition: var(--transition);
+}
+
+.back-link:hover { color: var(--primary-dark); text-decoration: underline; }
+
+@media (max-width: 768px) {
+    .pending-books-container { padding: 0 1rem; margin: 1.5rem auto; }
+    .cards-grid { grid-template-columns: 1fr; }
+}

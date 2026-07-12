@@ -1,0 +1,267 @@
+:root {
+    --primary:#4f46e5; --primary-dark:#4338ca; --secondary:#7c3aed;
+    --success:#10b981; --danger:#ef4444; --warning:#f59e0b;
+    --bg:#f0f4ff; --surface:#ffffff;
+    --dark:#0f172a; --text:#1e293b; --text-muted:#64748b; --text-light:#94a3b8;
+    --border:#e2e8f0;
+    --shadow-sm:0 1px 4px rgba(79,70,229,.07);
+    --shadow-md:0 4px 20px rgba(79,70,229,.11);
+    --radius-sm:6px; --radius-md:10px; --radius-lg:16px;
+    --transition:all 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.manage-users-container {
+    max-width: 1000px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Title */
+.manage-users-container h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -.03em;
+    margin-bottom: 1.75rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.manage-users-container h2 i { color: var(--primary); }
+
+.manage-users-container h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.manage-users-container h3::before {
+    content: '';
+    width: 3px;
+    height: 16px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+    display: inline-block;
+}
+
+/* ── Add User Form ───────────────────────────────────────────── */
+.form-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.form-group {
+    flex: 1 1 calc(50% - .5rem);
+    display: flex;
+    flex-direction: column;
+    gap: .38rem;
+}
+
+form label {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: .65rem .9rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: .9rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    transition: var(--transition);
+    min-width: unset;
+    flex: unset;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79,70,229,.12);
+    background: var(--surface);
+}
+
+form button[type="submit"] {
+    background: linear-gradient(135deg, var(--success), #059669);
+    color: #fff;
+    border: none;
+    padding: .68rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-size: .9rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-end;
+}
+
+form button[type="submit"]:hover {
+    opacity: .9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(16,185,129,.3);
+}
+
+/* ── Users Table ────────────────────────────────────────────── */
+.table-section {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+}
+
+table th, table td {
+    text-align: left;
+    padding: .88rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+table thead tr { background: var(--dark); }
+
+table th {
+    color: rgba(255,255,255,.82);
+    font-size: .73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    background: transparent;
+    white-space: nowrap;
+}
+
+table td { font-size: .88rem; }
+
+table tbody tr:last-child td { border-bottom: none; }
+
+table tbody tr:hover { background: #f5f3ff; }
+
+table td button {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .78rem;
+    font-weight: 600;
+    font-family: inherit;
+    padding: .3rem .65rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 2px;
+}
+
+table td button[name="delete_user"] {
+    background: rgba(239,68,68,.1);
+    color: var(--danger);
+}
+
+table td button[name="delete_user"]:hover {
+    background: var(--danger);
+    color: #fff;
+}
+
+/* Role badge */
+.role-badge {
+    display: inline-block;
+    padding: .22rem .7rem;
+    border-radius: 999px;
+    font-size: .73rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.role-admin { background: rgba(79,70,229,.1); color: var(--primary); }
+.role-user  { background: rgba(16,185,129,.1); color: var(--success); }
+
+/* No results */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    font-size: .95rem;
+}
+
+/* Alerts */
+.alert {
+    padding: .75rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.25rem;
+    font-size: .88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.alert-success { background: #d1fae5; color: #065f46; }
+.alert-error   { background: #fee2e2; color: #7f1d1d; }
+
+/* Back link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: 1.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .88rem;
+    transition: var(--transition);
+}
+
+.back-link:hover { color: var(--primary-dark); text-decoration: underline; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .manage-users-container { padding: 0 1rem; margin: 1.5rem auto; }
+    .form-group { flex: 1 1 100%; }
+    form { flex-direction: column; }
+}
