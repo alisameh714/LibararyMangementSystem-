@@ -122,5 +122,5 @@ The database is created **automatically** on first run — no setup needed.
 **Ali Edris**
 - Student ID: 220209960
 - University: Uskudar University
-- Course: COME309 – Web Programming
+- Graduation Project
 - Email: alisameh714@gmail.com
