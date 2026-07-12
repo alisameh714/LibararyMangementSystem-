@@ -1,0 +1,30 @@
+# Database
+library.db
+*.db
+*.sqlite
+
+# PHP config
+php.ini
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+error_log
+
+# Uploaded user files (optional - remove if you want uploads tracked)
+# assets/uploads/books/
+# assets/uploads/images/
+
+# Environment files
+.env
+.env.local
