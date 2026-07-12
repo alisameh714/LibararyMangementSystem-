@@ -1,91 +1,126 @@
-# Library Management System
+# 📚 Library Management System
 
-**Student:** Ali Edris
-**Student ID:** 220209960
-**University:** Uskudar University
-**Course:** COME309 – Web Programming
-**Email:** alisameh714@gmail.com
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
----
-
-## Prerequisites
-
-Ensure the following tools are installed on your system:
-- **XAMPP** (or any LAMP/WAMP stack): Used to run PHP and MySQL locally.
-- **Web Browser** (e.g., Chrome, Firefox).
+A full-stack web-based **Library Management System** built with PHP and SQLite. Features role-based access control, book uploads, an admin approval workflow, a comment system, and a modern responsive UI.
 
 ---
 
-## Setup Instructions
+## ✨ Features
 
-### 1. Clone or Download the Repository
+- 🔐 **Authentication** — Secure login & registration with bcrypt password hashing
+- 👥 **Role-Based Access** — Admin and User roles with different permissions
+- 📖 **Book Management** — Upload books with PDF files and cover images
+- ✅ **Approval Workflow** — Admin approves/rejects uploaded books before they go live
+- 🔍 **Search & Filter** — Filter books by title, author, category, language, and price
+- 💬 **Comment System** — Users can leave comments on book detail pages
+- 🛡️ **CSRF Protection** — All forms are protected against cross-site request forgery
+- 📱 **Responsive Design** — Works on desktop and mobile devices
 
-Clone the repository using Git:
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | PHP 8.x |
+| Database | SQLite (auto-initialized) |
+| Frontend | HTML5, CSS3, JavaScript |
+| Icons | Font Awesome 6 |
+| Server | PHP Built-in Server |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- PHP 8.x installed on your machine
+- No additional tools required — SQLite is built into PHP
+
+### Installation
+
+1. **Clone the repository**
 ```bash
-git clone https://github.com/your-repo/library-management-system.git
+git clone https://github.com/alisameh714/LibararyMangementSystem-.git
+cd LibararyMangementSystem-
 ```
-Or download and extract the ZIP file.
+
+2. **Start the server**
+```bash
+php -S localhost:8000
+```
+Or on Windows, double-click **`start_server.bat`**
+
+3. **Open your browser**
+```
+http://localhost:8000
+```
+
+The database is created **automatically** on first run — no setup needed.
 
 ---
 
-### 2. Move the Project to `htdocs`
+## 👤 Default Accounts
 
-Move the project folder to your XAMPP `htdocs` directory:
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | alisameh714@gmail.com | admin123 |
+| User | user1@library.com | user1pass |
+| User | user2@library.com | user2pass |
+
+---
+
+## 📁 Project Structure
+
 ```
-C:/xampp/htdocs/COME309_Project_Web_Programming
+├── admin/                  # Admin panel pages
+│   ├── manage_users.php
+│   ├── manage_books.php
+│   ├── manage_comments.php
+│   └── pending_books.php
+├── assets/
+│   ├── css/                # Stylesheets
+│   └── uploads/            # Book files & cover images
+├── includes/               # Shared PHP includes
+│   ├── db.php              # Database connection (SQLite)
+│   ├── auth.php            # Session authentication
+│   ├── header.php          # Navigation bar
+│   └── csrf.php            # CSRF protection
+├── sql/
+│   ├── init.sql            # Database schema + seed data
+│   └── schema.sql          # Table definitions
+├── user/                   # User panel pages
+│   ├── my_books.php
+│   ├── upload_book.php
+│   └── edit_book.php
+├── landing.php             # Home / book listing page
+├── dashboard.php           # Admin & user dashboard
+├── login.php               # Login page
+├── register.php            # Registration page
+└── book_details.php        # Book detail & comments page
 ```
 
 ---
 
-### 3. Set Up the Database
+## 📸 Pages Overview
 
-1. Open **phpMyAdmin**: `http://localhost/phpmyadmin`
-2. Create a new database named: `library_db`
-3. Import `sql/schema.sql` to create the tables.
-4. Import `sql/data.sql` to load the sample data.
-
----
-
-### 4. Configure the Database Connection
-
-Open `includes/db.php` and confirm the settings match your environment:
-```php
-$host     = "localhost";
-$user     = "root";
-$password = "";
-$dbname   = "library_db";
-```
+| Page | Description |
+|------|-------------|
+| Landing Page | Browse and search all approved books |
+| Dashboard | Admin stats & quick actions / User actions |
+| Book Details | Full book info, download, and comments |
+| Admin Panel | Manage users, books, comments, and pending approvals |
+| User Panel | Upload books, manage own submissions |
 
 ---
 
-### 5. Run the Project
+## 👨‍💻 Author
 
-1. Start **Apache** and **MySQL** from the XAMPP Control Panel.
-2. Open your browser and navigate to:
-```
-http://localhost/COME309_Project_Web_Programming/
-```
-
----
-
-### 6. Login Credentials
-
-| Role  | Email                    | Password |
-|-------|--------------------------|----------|
-| Admin | alisameh714@gmail.com    | ali123   |
-| User  | user1@library.com        | user123  |
-| User  | user2@library.com        | user123  |
-
----
-
-## Features
-
-- User registration and login with hashed passwords
-- Role-based access (Admin / User)
-- Book upload with PDF and cover image
-- Admin approval workflow for uploaded books
-- Search and filter books by title, author, category, language, price, and pages
-- Comment system on book detail pages
-- Admin panel: manage users, books, and comments
-- CSRF protection on all forms
-- File upload validation (type and size)
+**Ali Edris**
+- Student ID: 220209960
+- University: Uskudar University
+- Course: COME309 – Web Programming
+- Email: alisameh714@gmail.com
