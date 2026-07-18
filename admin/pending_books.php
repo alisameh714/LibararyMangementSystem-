@@ -66,14 +66,14 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <?= htmlspecialchars($book['title']) ?>
                                 </a>
                             </h3>
-                            <p class="card-author"><i class="fas fa-user-edit"></i> <?= htmlspecialchars($book['author']) ?></p>
+                            <p class="card-author"><i class="fas fa-user-edit"></i> <?= htmlspecialchars($book['author'] ?? '') ?></p>
                             <div class="card-meta">
-                                <span><i class="fas fa-bookmark"></i> <?= htmlspecialchars($book['category']) ?></span>
-                                <span><i class="fas fa-globe"></i> <?= htmlspecialchars($book['language']) ?></span>
-                                <span><i class="fas fa-file-alt"></i> <?= htmlspecialchars($book['pages']) ?> pg</span>
+                                <span><i class="fas fa-bookmark"></i> <?= htmlspecialchars($book['category'] ?? '') ?></span>
+                                <span><i class="fas fa-globe"></i> <?= htmlspecialchars($book['language'] ?? '') ?></span>
+                                <span><i class="fas fa-file-alt"></i> <?= htmlspecialchars((string)($book['pages'] ?? '')) ?> pg</span>
                             </div>
                             <?php if (!empty($book['description'])): ?>
-                                <p class="card-desc"><?= htmlspecialchars(mb_substr($book['description'], 0, 100)) ?>…</p>
+                                <p class="card-desc"><?= htmlspecialchars(mb_substr($book['description'] ?? '', 0, 100)) ?>…</p>
                             <?php endif; ?>
                             <!-- Actions -->
                             <form method="POST" class="card-actions">
