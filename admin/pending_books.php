@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/auth.php';
 require '../includes/db.php';
 require '../includes/csrf.php';
@@ -56,14 +56,14 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <!-- Cover -->
                         <div class="card-cover">
                                 <img src="../<?= !empty($book['book_image']) ? htmlspecialchars(ltrim($book['book_image'], './')) : 'assets/uploads/images/default-cover.svg' ?>"
-                                     alt="Cover of <?= htmlspecialchars($book['title']) ?>"
+                                     alt="Cover of <?= htmlspecialchars($book['title'] ?? '') ?>"
                                      onerror="this.src='../assets/uploads/images/default-cover.svg'; this.onerror=null;">
                         </div>
                         <!-- Info -->
                         <div class="card-info">
                             <h3 class="card-title">
                                 <a href="../book_details.php?id=<?= $book['id'] ?>">
-                                    <?= htmlspecialchars($book['title']) ?>
+                                    <?= htmlspecialchars($book['title'] ?? '') ?>
                                 </a>
                             </h3>
                             <p class="card-author"><i class="fas fa-user-edit"></i> <?= htmlspecialchars($book['author'] ?? '') ?></p>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require 'includes/auth.php';
 require 'includes/db.php';
 
@@ -130,8 +130,8 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php foreach ($books as $book): ?>
                         <article class="book-card">
                             <div class="book-cover">
-                                <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image']) : './assets/uploads/images/default-cover.svg' ?>"
-                                    alt="Cover of <?= htmlspecialchars($book['title']) ?>"
+                                <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image'] ?? '') : './assets/uploads/images/default-cover.svg' ?>"
+                                    alt="Cover of <?= htmlspecialchars($book['title'] ?? '') ?>"
                                     onerror="this.src='./assets/uploads/images/default-cover.svg'; this.onerror=null;">
                                 <?php if (!empty($book['price']) && $book['price'] > 0): ?>
                                     <span class="price-badge">$<?= number_format($book['price'], 2) ?></span>
@@ -143,19 +143,19 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="book-info">
-                                <h3 class="book-title"><?= htmlspecialchars($book['title']) ?></h3>
+                                <h3 class="book-title"><?= htmlspecialchars($book['title'] ?? '') ?></h3>
                                 <div class="book-details">
                                     <p class="author">
                                         <i class="fas fa-user"></i>
-                                        <?= htmlspecialchars($book['author']) ?>
+                                        <?= htmlspecialchars($book['author'] ?? '') ?>
                                     </p>
                                     <p class="category">
                                         <i class="fas fa-bookmark"></i>
-                                        <?= htmlspecialchars($book['category']) ?>
+                                        <?= htmlspecialchars($book['category'] ?? '') ?>
                                     </p>
                                     <p class="language">
                                         <i class="fas fa-globe"></i>
-                                        <?= htmlspecialchars($book['language']) ?>
+                                        <?= htmlspecialchars($book['language'] ?? '') ?>
                                     </p>
                                 </div>
                             </div>

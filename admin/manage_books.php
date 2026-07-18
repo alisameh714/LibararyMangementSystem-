@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/auth.php';
 require '../includes/db.php';
 require '../includes/csrf.php';
@@ -117,7 +117,7 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="cover-cell">
                                 <?php if (!empty($book['book_image'])): ?>
                                     <img src="../<?= htmlspecialchars(ltrim($book['book_image'], './')) ?>"
-                                         alt="Cover of <?= htmlspecialchars($book['title']) ?>"
+                                         alt="Cover of <?= htmlspecialchars($book['title'] ?? '') ?>"
                                          class="book-thumb"
                                          onerror="this.src='../assets/uploads/images/default-cover.svg'; this.onerror=null;">
                                 <?php else: ?>
@@ -128,15 +128,15 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <!-- Title -->
                             <td class="title-cell">
                                 <a href="../book_details.php?id=<?= $book['id'] ?>" class="title-link">
-                                    <?= htmlspecialchars($book['title']) ?>
+                                    <?= htmlspecialchars($book['title'] ?? '') ?>
                                 </a>
                             </td>
 
-                            <td><?= htmlspecialchars($book['author']) ?></td>
-                            <td><?= htmlspecialchars($book['category']) ?></td>
-                            <td><?= htmlspecialchars($book['language']) ?></td>
-                            <td><?= htmlspecialchars($book['pages']) ?></td>
-                            <td>$<?= htmlspecialchars($book['price']) ?></td>
+                            <td><?= htmlspecialchars($book['author'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($book['category'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($book['language'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($book['pages'] ?? '') ?></td>
+                            <td>$<?= htmlspecialchars($book['price'] ?? '') ?></td>
 
                             <!-- Status Badge -->
                             <td>

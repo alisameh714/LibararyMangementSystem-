@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/auth.php';
 require '../includes/db.php';
 require '../includes/csrf.php';
@@ -63,12 +63,12 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <!-- Title -->
                                 <td class="title-cell">
                                     <a href="../book_details.php?id=<?= $book['id'] ?>" class="title-link">
-                                        <?= htmlspecialchars($book['title']) ?>
+                                        <?= htmlspecialchars($book['title'] ?? '') ?>
                                     </a>
-                                    <small class="author-sub"><?= htmlspecialchars($book['author']) ?></small>
+                                    <small class="author-sub"><?= htmlspecialchars($book['author'] ?? '') ?></small>
                                 </td>
-                                <td><span class="tag"><?= htmlspecialchars($book['category']) ?></span></td>
-                                <td><?= htmlspecialchars($book['pages']) ?> pg</td>
+                                <td><span class="tag"><?= htmlspecialchars($book['category'] ?? '') ?></span></td>
+                                <td><?= htmlspecialchars($book['pages'] ?? '') ?> pg</td>
                                 <!-- Status -->
                                 <td>
                                     <span class="status-badge status-<?= $book['status'] ?>">

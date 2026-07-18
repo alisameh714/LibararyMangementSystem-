@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require 'includes/auth.php';
 require 'includes/db.php';
 
@@ -139,19 +139,19 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($books as $book): ?>
                             <tr>
                                 <td class="cover-cell">
-                                    <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image']) : './assets/uploads/images/default-cover.svg' ?>"
+                                    <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image'] ?? '') : './assets/uploads/images/default-cover.svg' ?>"
                                          alt="Cover" class="book-thumb"
                                          onerror="this.src='./assets/uploads/images/default-cover.svg'; this.onerror=null;">
                                 </td>
                                 <td class="title-cell">
                                     <a href="book_details.php?id=<?= $book['id'] ?>" class="title-link">
-                                        <?= htmlspecialchars($book['title']) ?>
+                                        <?= htmlspecialchars($book['title'] ?? '') ?>
                                     </a>
                                 </td>
-                                <td><?= htmlspecialchars($book['author']) ?></td>
-                                <td><span class="tag"><?= htmlspecialchars($book['category']) ?></span></td>
-                                <td><?= htmlspecialchars($book['language']) ?></td>
-                                <td><?= htmlspecialchars($book['pages']) ?></td>
+                                <td><?= htmlspecialchars($book['author'] ?? '') ?></td>
+                                <td><span class="tag"><?= htmlspecialchars($book['category'] ?? '') ?></span></td>
+                                <td><?= htmlspecialchars($book['language'] ?? '') ?></td>
+                                <td><?= htmlspecialchars($book['pages'] ?? '') ?></td>
                                 <td class="price">$<?= number_format($book['price'], 2) ?></td>
                                 <?php if ($isAdmin): ?>
                                     <td>

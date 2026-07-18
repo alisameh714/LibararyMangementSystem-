@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require 'includes/auth.php';
 require 'includes/db.php';
 require 'includes/csrf.php';
@@ -53,7 +53,7 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($book['title']) ?> | Library</title>
+    <title><?= htmlspecialchars($book['title'] ?? '') ?> | Library</title>
     <link rel="stylesheet" href="assets/css/includes/header.css">
     <link rel="stylesheet" href="assets/css/book_details.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -70,13 +70,13 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- Left: Cover Image -->
             <div class="book-cover-wrap">
-                    <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image']) : './assets/uploads/images/default-cover.svg' ?>"
-                         alt="Cover of <?= htmlspecialchars($book['title']) ?>"
+                    <img src="<?= !empty($book['book_image']) ? htmlspecialchars($book['book_image'] ?? '') : './assets/uploads/images/default-cover.svg' ?>"
+                         alt="Cover of <?= htmlspecialchars($book['title'] ?? '') ?>"
                          class="book-cover-img"
                          onerror="this.src='./assets/uploads/images/default-cover.svg'; this.onerror=null;">
 
                 <?php if (!empty($book['book_file'])): ?>
-                    <a href="<?= htmlspecialchars($book['book_file']) ?>" class="download-btn" download>
+                    <a href="<?= htmlspecialchars($book['book_file'] ?? '') ?>" class="download-btn" download>
                         <i class="fas fa-download"></i> Download Book
                     </a>
                 <?php endif; ?>
@@ -84,8 +84,8 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- Right: Details -->
             <div class="book-info">
-                <h1 class="book-title"><?= htmlspecialchars($book['title']) ?></h1>
-                <p class="book-author"><i class="fas fa-user-edit"></i> <?= htmlspecialchars($book['author']) ?></p>
+                <h1 class="book-title"><?= htmlspecialchars($book['title'] ?? '') ?></h1>
+                <p class="book-author"><i class="fas fa-user-edit"></i> <?= htmlspecialchars($book['author'] ?? '') ?></p>
 
                 <?php if ($_SESSION['user_role'] === 'admin'): ?>
                     <span class="status-badge status-<?= $book['status'] ?>">
@@ -94,24 +94,24 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endif; ?>
 
                 <?php if (!empty($book['description'])): ?>
-                    <p class="book-description"><?= htmlspecialchars($book['description']) ?></p>
+                    <p class="book-description"><?= htmlspecialchars($book['description'] ?? '') ?></p>
                 <?php endif; ?>
 
                 <div class="meta-grid">
                     <div class="meta-item">
                         <i class="fas fa-bookmark"></i>
                         <span class="meta-label">Category</span>
-                        <span class="meta-value"><?= htmlspecialchars($book['category']) ?></span>
+                        <span class="meta-value"><?= htmlspecialchars($book['category'] ?? '') ?></span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-globe"></i>
                         <span class="meta-label">Language</span>
-                        <span class="meta-value"><?= htmlspecialchars($book['language']) ?></span>
+                        <span class="meta-value"><?= htmlspecialchars($book['language'] ?? '') ?></span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-file-alt"></i>
                         <span class="meta-label">Pages</span>
-                        <span class="meta-value"><?= htmlspecialchars($book['pages']) ?></span>
+                        <span class="meta-value"><?= htmlspecialchars($book['pages'] ?? '') ?></span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-dollar-sign"></i>

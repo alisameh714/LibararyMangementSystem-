@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/auth.php';
 require '../includes/db.php';
 require '../includes/csrf.php';
@@ -136,23 +136,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="form-card-body">
                     <div class="field full">
                         <label for="title">Title <span style="color:red">*</span></label>
-                        <input type="text" id="title" name="title" value="<?= htmlspecialchars($book['title']) ?>" required>
+                        <input type="text" id="title" name="title" value="<?= htmlspecialchars($book['title'] ?? '') ?>" required>
                     </div>
                     <div class="field">
                         <label for="author">Author</label>
-                        <input type="text" id="author" name="author" value="<?= htmlspecialchars($book['author']) ?>">
+                        <input type="text" id="author" name="author" value="<?= htmlspecialchars($book['author'] ?? '') ?>">
                     </div>
                     <div class="field">
                         <label for="category">Category</label>
-                        <input type="text" id="category" name="category" value="<?= htmlspecialchars($book['category']) ?>">
+                        <input type="text" id="category" name="category" value="<?= htmlspecialchars($book['category'] ?? '') ?>">
                     </div>
                     <div class="field">
                         <label for="language">Language</label>
-                        <input type="text" id="language" name="language" value="<?= htmlspecialchars($book['language']) ?>">
+                        <input type="text" id="language" name="language" value="<?= htmlspecialchars($book['language'] ?? '') ?>">
                     </div>
                     <div class="field">
                         <label for="pages">Pages</label>
-                        <input type="number" id="pages" name="pages" value="<?= htmlspecialchars($book['pages']) ?>">
+                        <input type="number" id="pages" name="pages" value="<?= htmlspecialchars($book['pages'] ?? '') ?>">
                     </div>
                     <div class="field">
                         <label for="price">Price ($)</label>
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="field full">
                         <label for="description">Description</label>
-                        <textarea id="description" name="description"><?= htmlspecialchars($book['description']) ?></textarea>
+                        <textarea id="description" name="description"><?= htmlspecialchars($book['description'] ?? '') ?></textarea>
                     </div>
                 </div>
             </div>
